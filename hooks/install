@@ -1,0 +1,8 @@
+  $ps_module_path =  "C:/Program Files/WindowsPowerShell/Modules/{{ pkg.name }}/{{ pkg.version }}"
+  if (-NOT (Test-Path $ps_module_path)){
+    Write-Host "Installing {{ pkg.name }} module..."
+    New-Item -ItemType Directory -Path $ps_module_path
+    Copy-Item "{{ pkg.path }}\bin\*" "$ps_module_path" -Force -Recurse
+  }else{
+    Write-Host "xWebAdministration module already installed..."
+  }
