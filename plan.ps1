@@ -15,9 +15,7 @@ $pkg_build_deps=@("core/nuget")
 function Invoke-Unpack { 
   New-Item -ItemType Directory -Path $HAB_CACHE_SRC_PATH/output -Force
   $nugetPath = Get-HabPackagePath nuget
-  Write-Host "$nugetPath/bin/nuget.exe"
-  Write-Host "$HAB_CACHE_SRC_PATH"
-  Start-Process "$nugetPath/bin/nuget.exe" -Wait -ArgumentList "install xWebAdministration -Source $HAB_CACHE_SRC_PATH -OutputDirectory $HAB_CACHE_SRC_PATH/output"
+  Start-Process "$nugetPath/bin/nuget.exe" -Wait -ArgumentList "install $pkg_name -Source $HAB_CACHE_SRC_PATH -OutputDirectory $HAB_CACHE_SRC_PATH/output"
 }
 
 function Invoke-Install {
